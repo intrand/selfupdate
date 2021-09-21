@@ -1,30 +1,40 @@
 package main
 
 import (
-	"log"
+	"fmt"
+	"os"
+	"path/filepath"
 
-	"github.com/blang/semver"
-	"github.com/rhysd/go-github-selfupdate/selfupdate"
+	"gopkg.in/alecthomas/kingpin.v2"
 )
 
-const version = "0.0.2"
+const (
+	version = "0.0.3"
+)
 
-func doSelfUpdate() {
-	v := semver.MustParse(version)
-	latest, err := selfupdate.UpdateSelf(v, "intrand/selfupdate")
-	if err != nil {
-		log.Println("Binary update failed:", err)
-		return
-	}
-	if latest.Version.Equals(v) {
-		// latest version is the same as current version. It means current binary is up to date.
-		log.Println("You are already running the latest version:", version)
-	} else {
-		log.Println("Successfully updated to version", latest.Version)
-		log.Println("Release note:\n", latest.ReleaseNotes)
-	}
-}
+var (
+	cmdname = filepath.Base(os.Args[0])
+)
 
 func main() {
-	doSelfUpdate()
+	// args := kingpin.MustParse(app.Parse(os.Args[1:]))
+	kingpin.MustParse(app.Parse(os.Args[1:]))
+
+	// Handle updating to a new version
+	fmt.Print("Attempting update of " + cmdname + "...")
+	update_result, err := doSelfUpdate()
+	if err != nil {
+		fmt.Println("Couldn't update at this time. Please try again later. Continuing...")
+	}
+	if update_result {
+		fmt.Println("Please run " + cmdname + " again.")
+		os.Exit(0)
+	}
+
+	// main loop
+	// switch args {
+	// case example.FullCommand():
+	// 	fmt.Println("Yay!")
+	// }
+	fmt.Println("Pretend this does something cool.")
 }
