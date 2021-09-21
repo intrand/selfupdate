@@ -1,0 +1,2 @@
+# selfupdate
+self-update test
