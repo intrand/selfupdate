@@ -10,6 +10,9 @@ import (
 
 const (
 	version = "0.0.9"
+	commit  = ""
+	date    = ""
+	builtBy = ""
 )
 
 var (
@@ -29,6 +32,12 @@ func main() {
 	if update_result {
 		fmt.Println("Please run " + cmdname + " again.")
 		os.Exit(0)
+	}
+
+	if *cmd_commit {
+		fmt.Println("version:", version)
+		fmt.Println("Commit:", commit)
+		fmt.Println("built by:", builtBy)
 	}
 
 	// main loop
