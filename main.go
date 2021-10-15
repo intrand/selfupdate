@@ -8,8 +8,8 @@ import (
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 
-const (
-	version = "0.0.12"
+var (
+	version = ""
 	commit  = ""
 	date    = ""
 	builtBy = ""
@@ -37,6 +37,7 @@ func main() {
 	if *cmd_commit {
 		fmt.Println("version:", version)
 		fmt.Println("Commit:", commit)
+		fmt.Println("Date:", date)
 		fmt.Println("built by:", builtBy)
 	}
 
