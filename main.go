@@ -9,10 +9,10 @@ import (
 )
 
 var (
-	version = ""
-	commit  = ""
-	date    = ""
-	builtBy = ""
+	version = "" // to be filled in by goreleaser
+	commit  = "" // to be filled in by goreleaser
+	date    = "" // to be filled in by goreleaser
+	builtBy = "" // to be filled in by goreleaser
 )
 
 var (

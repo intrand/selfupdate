@@ -51,3 +51,6 @@ announce:
   discord:
     enabled: true
     message_template: '{{ .ProjectName }} {{ .Tag }} is out! Check it out at https://{{ .ModulePath }}/releases/tag/{{ .Tag }}'
+  slack:
+    enabled: true
+    message_template: '{{ .ProjectName }} {{ .Tag }} is out! Check it out at https://{{ .ModulePath }}/releases/tag/{{ .Tag }}'
