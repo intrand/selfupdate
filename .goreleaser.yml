@@ -8,7 +8,8 @@ before:
     # you may remove this if you don't need go generate
     - go generate ./...
 builds:
-  - env:
+  - id: selfupdate
+    env:
       - CGO_ENABLED=0
     goos:
       - linux
@@ -20,7 +21,8 @@ builds:
       - arm64
     ldflags:
       - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{ .CommitDate }} -X main.builtBy=goreleaser
-  - env:
+  - id: selfupdate_windows
+    env:
       - CGO_ENABLED=0
     goos:
       - windows
