@@ -12,12 +12,20 @@ builds:
       - CGO_ENABLED=0
     goos:
       - linux
-      - windows
+      # - windows
       - darwin
     goarch:
       - amd64
       - arm
       - arm64
+    ldflags:
+      - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{ .CommitDate }} -X main.builtBy=goreleaser
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+    goarch:
+      - amd64
     ldflags:
       - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{ .CommitDate }} -X main.builtBy=goreleaser
 archives:
