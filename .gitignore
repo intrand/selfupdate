@@ -15,3 +15,5 @@
 # vendor/
 
 dist/
+/goreleaser.yml
+releaser.sh
